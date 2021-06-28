@@ -1,0 +1,186 @@
+package Individuos;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Areamedica {
+
+	private String area;
+	private ArrayList<Medico> medico;
+	private Medico jefeArea;
+
+	public Areamedica() {
+		this.area = null;
+		this.medico = null;
+		this.jefeArea = null;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public ArrayList<Medico> getMedico() {
+		return medico;
+	}
+
+	public void ingresarjefe(ArrayList<Areamedica> listarea) {
+
+		System.out.println("a que area pertenece?");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+
+		for (Areamedica e : listarea) {
+			if (e.area.equals(Ingreso)) {
+				if (e.jefeArea == null) {
+
+					System.out.println("ingrese matricula del jefe");
+					long matricula = Ss.nextLong();
+
+					if (e.Buscarmedico(matricula, e.medico)) {
+						e.jefeArea = e.Devolvermedico(matricula, e.medico);
+
+					}
+
+					else {
+						System.out.println("medico no encontrado");
+					}
+
+				} else {
+					System.out.println("ya hay un jefe");
+				}
+			} else {
+				System.out.println("el area no existe o esta mal escrita");
+			}
+
+		}
+
+	}
+
+	public boolean Buscarmedico(long matricula, ArrayList<Medico> listamedico) {
+		for (Medico e : listamedico) {
+			if (e.getMatricula() == matricula) {
+				return true;
+			}
+
+		}
+
+		return false;
+	}
+
+	public Medico Devolvermedico(long matricula, ArrayList<Medico> listamedico) {
+		for (Medico e : listamedico) {
+
+			if (e.getMatricula() == matricula) {
+				return e;
+			}
+		}
+		return null;
+	}
+
+	public String ingresarareamedica(long matricula, ArrayList<Areamedica> areamedica) {
+		Medico medico = new Medico();
+		System.out.println("ingrese area medica");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+
+		for (Areamedica e : areamedica) {
+			if (e.area == Ingreso) {
+				medico.Altamedico(matricula, this.medico);
+			}
+		}
+
+		System.out.println("desea crear una nueva area medica llamada " + Ingreso);
+
+		System.out.println("1 para si");
+		System.out.println("cualquier numero para no");
+		int afirmar = Ss.nextInt();
+
+		if (afirmar == 1) {
+			Areamedica area = new Areamedica();
+
+			area.area = Ingreso;
+
+			areamedica.add(area);
+
+			System.out.println("area medica creada");
+			return Ingreso;
+		}
+
+		return null;
+	}
+
+	public void cargarmedico(ArrayList<Areamedica> areamedica) {
+		Areamedica aream =new Areamedica();
+		ArrayList <Medico> listamedico =new ArrayList<Medico>();
+		
+		Scanner Sc = new Scanner(System.in);
+		System.out.println("ingrese la matricula");
+		long matricula = Sc.nextLong();
+		
+		Medico medico=new Medico();
+
+		String areadevuelta=this.ingresarareamedica(matricula, areamedica);
+		
+		
+		
+		
+		for (Areamedica e : areamedica) {
+			
+			if (e.getArea() == areadevuelta) 
+			{
+				
+				if (e.Buscarmedico(matricula, e.getMedico())) {
+					
+				medico=medico.Altamedico(matricula, areamedica);
+				}
+			}
+			else
+			{
+				System.out.println("area medica no encontrada");
+			}
+		}
+		
+			areamedica.add(aream);
+
+	}
+
+	public void eliminarmedico(ArrayList<Areamedica> areamedica) {
+
+		Scanner Sc = new Scanner(System.in);
+		System.out.println("ingrese area medica");
+		String area = Sc.nextLine();
+		System.out.println("ingrese la matricula del doctor");
+		long matricula = Sc.nextLong();
+		Medico medico = new Medico();
+
+		for (Areamedica e : areamedica) {
+			if (e.getArea() == area) {
+				if (e.Buscarmedico(matricula, e.medico)) {
+					e.medico = medico.Bajamedico(matricula, e.medico);
+				}
+
+			}
+		}
+
+	}
+
+	public void modificarmedico(ArrayList<Areamedica> areamedica) {
+		Scanner Sc = new Scanner(System.in);
+		System.out.println("ingrese area medica");
+		String area = Sc.nextLine();
+		System.out.println("ingrese la matricula del doctor");
+		long matricula = Sc.nextLong();
+		Medico medico = new Medico();
+
+		for (Areamedica e : areamedica) {
+			if (e.getArea() == area) {
+				if (e.Buscarmedico(matricula, e.medico)) {
+					e.medico = medico.Modificacionmedico(matricula, e.medico);
+				}
+
+			}
+		}
+
+	}
+
+}

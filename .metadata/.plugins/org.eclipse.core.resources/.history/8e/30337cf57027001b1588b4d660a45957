@@ -1,0 +1,11 @@
+package Individuos;
+
+public class Clinico extends Medico{
+
+	public void Generarreporte() {
+
+	}
+
+	
+	
+}

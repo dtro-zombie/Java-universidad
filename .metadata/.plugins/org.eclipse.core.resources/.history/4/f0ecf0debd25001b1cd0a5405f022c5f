@@ -1,0 +1,137 @@
+package menus;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import Individuos.Medico;
+import Individuos.Paciente;
+
+public class Menu {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String opciones = "Menu";
+		
+		while(true) {
+			System.out.println(opciones);
+			System.out.println("1)Paciente");
+			System.out.println("2)Medico");
+			int opcion;
+			opcion = sc.nextInt();
+			
+			switch(opcion) {
+			
+			case 1:
+				menuPaciente();
+				break;
+			
+			case 2:
+				menuMedico();
+				break;
+				
+			case 3:
+				break;
+				
+			case 4: 
+				System.out.println("Fin de la transaccion!");
+				System.exit(0);
+				
+			default: 
+				System.out.println("Opcion no válida");
+			}
+		}
+		
+
+	}
+	
+	static void menuPaciente() {
+		ArrayList<Paciente> listapacientes = new ArrayList <Paciente>();
+		Paciente paciente1 = new Paciente();
+		Scanner sc = new Scanner(System.in);
+		Scanner dc = new Scanner(System.in);
+		int op;
+		
+		do {
+			
+			System.out.println("1)Registrar Paciente");
+			System.out.println("2)Modificar Paciente");
+			System.out.println("3)Buscar Paciente");
+			System.out.println("4)Salir");
+			
+			op = sc.nextInt();
+			
+			switch(op) {
+			
+			case 1: 
+				paciente1.registrarpaciente(listapacientes);
+				break;
+				
+			case 2:
+				int idIngresado=0;
+				System.out.println("Ingrese ID del Paciente: ");
+				idIngresado = dc.nextInt();
+				paciente1.Modificarpaciente(idIngresado, listapacientes);
+				break;
+				
+			case 3:
+				paciente1.mostrarpacientes(listapacientes);
+				break;
+				
+			case 0:
+				System.out.println("Volver al menu principal");
+				
+			}
+		} while(op != 0);
+		
+		
+	}
+	
+	static void menuMedico() {
+		ArrayList<Medico> listamedico = new ArrayList <Medico>();
+		Scanner sc = new Scanner(System.in);
+		Scanner dc = new Scanner(System.in);
+		Medico medico1 = new Medico();
+		long matri;
+		int op;
+		
+		do {
+			System.out.println("1)Alta");
+			System.out.println("2)Modificar");
+			System.out.println("3)Baja");
+			System.out.println("4)Salir");
+			
+			op = sc.nextInt();
+			
+			switch(op) {
+			
+			case 1:
+				
+				System.out.println("Ingrese Matricula");
+				matri = dc.nextInt();
+				medico1.Altamedico(matri, listamedico);
+				break;
+			
+			case 2:
+				
+				System.out.println("Ingrese Matricula");
+				matri = dc.nextInt();
+				medico1.Bajamedico(matri, listamedico);
+				break;
+				
+			case 3:
+				
+				System.out.println("Ingrese Matricula");
+				matri = dc.nextInt();
+				medico1.Modificacionmedico(matri, listamedico);
+				break;
+				
+			case 0:
+				System.out.println("Volver al menu principal");
+			}
+			
+			
+		}while(op != 0);
+	}
+
+}

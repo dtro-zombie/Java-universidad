@@ -1,0 +1,17 @@
+package funcional;
+
+public class Consultorios {
+
+	private int idconsultorio;
+
+	public Consultorios() 
+	{
+		this.idconsultorio = idconsultorio;
+	}
+	
+	public void mostrar()
+	{
+		System.out.println(this.idconsultorio);
+	}
+	
+}

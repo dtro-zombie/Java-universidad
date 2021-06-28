@@ -1,0 +1,10 @@
+package funcional;
+
+public class Tradicional extends Consultorios{
+
+	public Tradicional(int idconsultorio) {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}

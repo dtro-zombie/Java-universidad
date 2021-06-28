@@ -1,0 +1,12 @@
+package funcional;
+
+public class Laboratorio extends Consultorios
+{
+
+	public Laboratorio(int idconsultorio) {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
+}

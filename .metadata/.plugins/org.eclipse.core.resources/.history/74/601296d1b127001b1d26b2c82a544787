@@ -1,0 +1,30 @@
+static void medicoEstudios(ArrayList<Areamedica> listaArea, ArrayList<Paciente> listapacientes, ArrayList<Prestaciones> listaPrestacion) {
+		Scanner sc = new Scanner(System.in);
+		Medico medico1 = new Medico();
+		int opcion;
+		do {
+			System.out.println("1)Registrar asistencia");
+			System.out.println("2)Cargar estudio");
+			System.out.println("3)Cargar receta");
+			
+			opcion = sc.nextInt();
+			
+			switch(opcion) {
+			
+			case 1:
+				medico1.asistencia(listaArea, listapacientes, listaPrestacion);
+				break;
+			
+			case 2:
+				
+				break;
+				
+			case 3:
+				break;
+				
+			case 4: 
+				break;
+			
+			}
+		}while(opcion != 0);
+	}

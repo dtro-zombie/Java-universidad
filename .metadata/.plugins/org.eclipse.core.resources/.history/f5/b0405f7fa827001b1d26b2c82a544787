@@ -1,0 +1,94 @@
+package funcional;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class Fecha {
+	private int dia;
+	private int mes;
+	private int anio;
+
+	Fecha() {
+		this.dia = 0;
+		this.mes = 0;
+		this.anio = 0;
+
+	}
+	
+	public void mostrar()
+	{
+		System.out.println("dia: " +this.dia+ "mes: " +this.mes+ "año: "+this.anio);
+	}
+	
+	
+
+	public int getDia() {
+		return dia;
+	}
+
+
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+
+
+	public int getMes() {
+		return mes;
+	}
+
+
+
+	public void setMes(int mes) {
+		this.mes = mes;
+	}
+
+
+
+	public int getAnio() {
+		return anio;
+	}
+
+
+
+	public void setAnio(int anio) {
+		this.anio = anio;
+	}
+
+
+
+	public boolean controlarfecha() {
+		boolean validoFecha = false;
+		Calendar fechas = new GregorianCalendar();
+		
+		if(this.anio>=fechas.get(Calendar.YEAR)&&this.mes>=fechas.get(Calendar.MONTH)&&this.dia>=fechas.get(Calendar.DAY_OF_MONTH))
+		{
+			validoFecha=true;
+		}
+		
+		return validoFecha;
+	}	
+			
+			
+	public boolean controlarfecha2()
+	
+	{
+		boolean validoFecha = false;
+		if (this.dia < 1 || this.dia >31) 
+		{
+			validoFecha = true;
+		}
+
+		if (this.mes < 1 || this.mes > 12) 
+		{
+			validoFecha = true;
+		}
+
+		if (this.mes == 2 && this.dia == 29 && this.anio % 400 == 0 || (this.anio % 4 == 0 && this.anio % 100 != 0)) {
+			validoFecha = true;
+		}
+
+		return validoFecha;
+	}
+}

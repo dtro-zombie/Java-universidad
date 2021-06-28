@@ -1,0 +1,14 @@
+package funcional;
+
+public class Consultorios {
+
+	private int idconsultorio;
+
+	public Consultorios(int idconsultorio) 
+	{
+		this.idconsultorio = idconsultorio;
+	}
+	
+	
+	
+}

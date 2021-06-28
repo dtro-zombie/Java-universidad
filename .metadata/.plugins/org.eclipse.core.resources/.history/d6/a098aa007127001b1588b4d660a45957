@@ -1,0 +1,14 @@
+package Individuos;
+
+import java.util.ArrayList;
+
+public class Clinico extends Medico{
+
+	public void Generarreporte(ArrayList<Prestaciones> listaprestacion) 
+	{
+
+	}
+
+	
+	
+}

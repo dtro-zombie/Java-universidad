@@ -1,0 +1,58 @@
+package funcional;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class Fecha {
+	private int dia;
+	private int mes;
+	private int anio;
+
+	Fecha() {
+		this.dia = 0;
+		this.mes = 0;
+		this.anio = 0;
+
+	}
+
+	public boolean controlarfecha() {
+		boolean validoFecha = false;
+		Calendar fechas = new GregorianCalendar();
+		
+		if(this.anio > fechas.get(Calendar.YEAR))
+		{
+			
+			
+			
+		}
+		else if(this.anio == fechas.get(Calendar.YEAR))
+		{
+			
+		}
+		else 
+		{
+			return false;
+		}
+			
+	}	
+			
+			
+	public boolean controlarfecha2() 
+	{
+		if (this.dia >= 1 || this.dia <=31) 
+		{
+			validoFecha = true;
+		}
+
+		if (this.mes >= 1 || this.mes <= 12) 
+		{
+			validoFecha = true;
+		}
+
+		if (this.mes == 2 && this.dia == 29 && this.anio % 400 == 0 || (this.anio % 4 == 0 && this.anio % 100 != 0)) {
+			validoFecha = true;
+		}
+
+		return validoFecha;
+	}
+}

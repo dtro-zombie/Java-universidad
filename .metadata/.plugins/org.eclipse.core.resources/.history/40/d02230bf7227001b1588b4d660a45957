@@ -1,0 +1,25 @@
+package Individuos;
+
+import java.util.ArrayList;
+
+import funcional.Prestaciones;
+
+public class Clinico extends Medico{
+
+	public void Generarreporte(ArrayList<Prestaciones> listaprestacion) 
+	{
+	
+		for(Prestaciones e : listaprestacion)
+		{
+			
+			
+			
+		}
+		
+		
+		
+	}
+
+	
+	
+}

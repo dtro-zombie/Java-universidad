@@ -1,0 +1,187 @@
+package Individuos;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Medico {
+
+	private long matricula;
+	private String nombre, apellido, especialidad;
+	private boolean clinico;
+
+
+	public Medico() {
+
+		this.matricula = 0;
+		this.nombre = null;
+		this.apellido = null;
+		this.especialidad = null;
+		this.clinico = false;
+		
+	}
+
+	
+	private void  Ingresarmatricula()
+	{
+		System.out.println("ingrese matricula del medico");
+		Scanner Ss = new Scanner(System.in);
+		long Ingreso = Ss.nextLong();
+		this.matricula = Ingreso;
+	}
+	private void  Ingresarnombre()
+	{
+		System.out.println("ingrese nombre del medico");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+		this.nombre = Ingreso;
+
+	}
+	private void  Ingresarapellido()
+	{
+		System.out.println("ingrese apellido del medico");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+		this.apellido = Ingreso;
+
+	}
+	private void  Ingresarespecialidad()
+	{
+		System.out.println("ingrese nombre del medico");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+		this.especialidad = Ingreso;
+
+	}
+	private void Ingresararemedica()
+	{
+		//pensarlo mejor
+		System.out.println("igrese el areamedica");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+		
+	}
+	
+	public void Cargarestudios() {
+		
+	}
+
+	public void Cargarrecetas() {
+
+	}
+	public boolean Buscarmedico(long matricula, ArrayList<Medico> listamedico) {
+		for (Medico e : listamedico) {
+			if (e.matricula == matricula) {
+				return true;
+			}
+
+		}
+
+		return false;
+	}
+	public void Devolvermedico(long matricula, ArrayList<Medico> listamedico)
+	{
+		for (Medico e : listamedico) {
+			
+				if (e.matricula == matricula) {
+					return e;
+				}
+			}
+			return null;
+	}
+	public void Altamedico(long matricula, ArrayList<Medico> listamedico) {
+		
+		Medico medico = new Medico();
+
+		medico.Ingresarmatricula();
+		// controlar y mejorar
+
+		if (medico.Buscarmedico(medico.matricula, listamedico)) {
+
+			System.out.println("El medico ya existe");
+
+		} else {
+
+			medico.Ingresarnombre();
+			medico.Ingresarapellido();
+			medico.Ingresarespecialidad();
+
+			listamedico.add(medico);
+			System.out.println("medico cargado con exito");
+
+		}
+		
+		
+		
+	}
+
+	public void Modificacionmedico(long matricula, ArrayList<Medico> listamedico) {
+		
+		Medico medico = new Medico();
+
+		if (Buscarmedico(matricula, listamedico)) {
+
+			medico = this.Devolvermedico(matricula, listamedico);
+
+			listamedico.remove(medico);
+
+			Scanner Sc = new Scanner(System.in);
+			int opcion = 0;
+
+			do {
+
+				System.out.println("opcion 1: modificar matricula");
+				System.out.println("opcion 2: modificar nombre");
+				System.out.println("opcion 3: modificar apellido");
+				System.out.println("opcion 4: modificar ");
+				System.out.println("opcion 5: modificar ");
+				System.out.println("opcion 6: modificar ");
+				System.out.println("0: para salir");
+				opcion = Sc.nextInt();
+				switch (opcion) {
+
+				case 1:
+					medico.Ingresarmatricula();
+					
+					break;
+				case 2:
+					medico.Ingresarnombre();
+					break;
+				case 3:
+					medico.Ingresarapellido();
+					break;
+				case 4:
+				
+					break;
+				case 5:
+					
+					break;
+				case 6:
+					
+					break;
+				}
+			} while (opcion != 0);
+
+			listamedico.add(medico);
+
+			System.out.println("medico modificado con exito");
+
+		}
+
+		else {
+			System.out.println("no existe, primero registre al paciente");
+		}
+
+	
+
+
+	}
+
+	public void Bajamedico() {
+
+	}
+
+	public void Generarreporte() {
+		
+	} 
+
+}

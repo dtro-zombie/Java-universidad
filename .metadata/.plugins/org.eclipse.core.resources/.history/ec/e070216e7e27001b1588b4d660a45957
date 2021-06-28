@@ -1,0 +1,246 @@
+package menus;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import Individuos.Areamedica;
+import Individuos.Medico;
+import Individuos.Paciente;
+import funcional.Turno;
+
+public class Menu {
+
+	public static void main(String[] args) {
+		ArrayList<Paciente> listapacientes = new ArrayList <Paciente>();
+		Paciente paciente1 = new Paciente();
+		ArrayList<Areamedica> listaArea = new ArrayList <Areamedica>();
+		Areamedica area1 = new Areamedica();
+		Scanner sc = new Scanner(System.in);
+		
+		
+		while(true) {
+			System.out.println("1)Administrador");
+			System.out.println("2)Medico");
+			System.out.println("3)Clinico");
+			int opcion;
+			opcion = sc.nextInt();
+			
+			switch(opcion) {
+			
+			case 1:
+				
+				menuAdministrador( listapacientes, paciente1, listaArea, area1);
+				break;
+			
+			case 2:
+				
+				break;
+				
+			case 3:
+				break;
+				
+			case 4: 
+				System.out.println("Fin de la transaccion!");
+				System.exit(0);
+				
+			default: 
+				System.out.println("Opcion no válida");
+			}
+		}
+		
+
+	}
+	
+	static void menuAdministrador(ArrayList<Paciente> listapacientes, Paciente paciente1, ArrayList<Areamedica> listaArea , Areamedica area1) {
+			Scanner sc = new Scanner(System.in);
+					
+			while(true) {
+				System.out.println("1)Paciente");
+				System.out.println("2)Medico");
+				System.out.println("3)Turno");
+				int opcion;
+				opcion = sc.nextInt();
+				
+				switch(opcion) {
+				
+				case 1:
+					menuPaciente(listapacientes, paciente1);
+					break;
+				
+				case 2:
+					menuMedico(listaArea, area1);
+					break;
+					
+				case 3:
+					menuTurno(listapacientes, listaArea);
+					break;
+					
+				case 4: 
+					
+					
+				default: 
+					System.out.println("Opcion no válida");
+				}
+			}
+		
+	}
+	
+	static void menuPaciente(ArrayList<Paciente> listapacientes, Paciente paciente1) {
+		
+		Scanner sc = new Scanner(System.in);
+		int op;
+		
+		do {
+			
+			System.out.println("1)Registrar Paciente");
+			System.out.println("2)Modificar Paciente");
+			System.out.println("3)Buscar Paciente");
+			System.out.println("4)Salir");
+			
+			op = sc.nextInt();
+			
+			switch(op) {
+			
+			case 1: 
+				paciente1.registrarpaciente(listapacientes);
+				break;
+				
+			case 2:
+				int idIngresado=0;
+				System.out.println("Ingrese ID del Paciente: ");
+				idIngresado = sc.nextInt();
+				paciente1.Modificarpaciente(idIngresado, listapacientes);
+				break;
+				
+			case 3:
+				paciente1.mostrarpacientes(listapacientes);
+				break;
+				
+			case 0:
+				System.out.println("Volver al menu principal");
+				
+			}
+		} while(op != 0);
+		
+		
+	}
+	
+	static void menuMedico(ArrayList<Areamedica> listaArea , Areamedica area1) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		long matri;
+		int op;
+		
+		do {
+			System.out.println("1)Ingresar Medico");
+			System.out.println("2)Modificar Medico");
+			System.out.println("3)Baja Medico");
+			System.out.println("4)Salir");
+			
+			op = sc.nextInt();
+			
+			switch(op) {
+			
+			case 1:	
+				area1.cargarmedico(listaArea);
+				break;
+			
+			case 2:
+				area1.modificarmedico(listaArea);
+				break;
+				
+			case 3:
+				area1.eliminarmedico(listaArea);
+				break;
+				
+			case 4:
+				System.out.println("Volver al menu principal");
+				break;
+			}
+			
+			
+		}while(op != 0);
+	}
+	
+	static void menuTurno(ArrayList<Paciente> listapacientes, ArrayList<Areamedica> listaArea) {
+		
+		Scanner sc = new Scanner(System.in);
+		Turno turno1 = new Turno();
+		int idTurno, idPaciente;
+		
+		
+		while(true) {
+			System.out.println("1)Ingresar Turno");
+			System.out.println("2)Cancelar Turno");
+			System.out.println("3)Modificar Turno");
+			System.out.println("4)SobreTurno");
+			int opcion;
+			opcion = sc.nextInt();
+			
+			switch(opcion) {
+			
+			case 1:
+				turno1.Altaturno(listapacientes, listaArea);
+				break;
+			
+			case 2:
+				System.out.println("Ingrese id del Turno");
+				idTurno = sc.nextInt();
+				System.out.println("Ingrese id del Paciente");
+				idPaciente = sc.nextInt();
+				turno1.Bajaturno(idTurno, idPaciente, listapacientes);
+				break;
+				
+			case 3:
+				System.out.println("Ingrese id del Turno");
+				idTurno = sc.nextInt();
+				System.out.println("Ingrese id del Paciente");
+				idPaciente = sc.nextInt();
+				turno1.Modificarturno(idTurno, idPaciente, listapacientes, listaArea);
+				break;
+				
+			case 4: 
+				System.out.println("Menu");
+				break;
+				
+			default: 
+				System.out.println("Opcion no válida");
+			}
+		}
+		
+	}
+	
+	static void medicoEstudios() {
+		Scanner sc = new Scanner(System.in);
+		
+		
+		while(true) {
+			System.out.println("1)Registrar asistencia");
+			System.out.println("2)Cargar estudio");
+			System.out.println("3)Cargar receta");
+			int opcion;
+			opcion = sc.nextInt();
+			
+			switch(opcion) {
+			
+			case 1:
+				
+				break;
+			
+			case 2:
+				
+				break;
+				
+			case 3:
+				break;
+				
+			case 4: 
+				break;
+			default: 
+				System.out.println("Opcion no válida");
+			}
+		}
+	}
+
+}

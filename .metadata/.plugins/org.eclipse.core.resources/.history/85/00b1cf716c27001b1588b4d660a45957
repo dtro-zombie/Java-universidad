@@ -1,0 +1,256 @@
+// modificar carga utilizar area
+
+package Individuos;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import funcional.Prestaciones;
+import funcional.Turno;
+
+public class Medico {
+
+	private long matricula;
+	private String nombre, apellido;
+
+	public Medico() {
+
+		this.matricula = 0;
+		this.nombre = null;
+		this.apellido = null;
+
+	}
+
+	public long getMatricula() {
+		return matricula;
+	}
+
+	private void Ingresarmatricula() {
+		System.out.println("ingrese matricula del medico");
+		Scanner Ss = new Scanner(System.in);
+		long Ingreso = Ss.nextLong();
+		this.matricula = Ingreso;
+	}
+
+	private void Ingresarnombre() {
+		System.out.println("ingrese nombre del medico");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+		this.nombre = Ingreso;
+
+	}
+
+	private void Ingresarapellido() {
+		System.out.println("ingrese apellido del medico");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+		this.apellido = Ingreso;
+
+	}
+
+	private void Ingresararemedica() {
+		// pensarlo mejor
+		System.out.println("igrese el areamedica");
+		Scanner Ss = new Scanner(System.in);
+		String Ingreso = Ss.nextLine();
+
+	}
+
+	public boolean Buscarmedico(long matricula, ArrayList<Medico> listamedico) {
+		for (Medico e : listamedico) {
+			if (e.matricula == matricula) {
+				return true;
+			}
+
+		}
+
+		return false;
+	}
+
+	public Medico Devolvermedico(long matricula, ArrayList<Medico> listamedico) {
+		for (Medico e : listamedico) {
+
+			if (e.matricula == matricula) {
+				return e;
+			}
+		}
+		return null;
+	}
+
+	public void Altamedico(long matricula, ArrayList<Medico> listamedico) {
+
+		Medico medico = new Medico();
+
+		medico.Ingresarmatricula();
+		// controlar y mejorar
+
+		if (medico.Buscarmedico(medico.matricula, listamedico)) {
+
+			System.out.println("El medico ya existe");
+
+		} else {
+
+			medico.Ingresarnombre();
+			medico.Ingresarapellido();
+
+			listamedico.add(medico);
+			System.out.println("medico cargado con exito");
+
+		}
+
+	}
+
+	public ArrayList<Medico> Modificacionmedico(long matricula, ArrayList<Medico> listamedico) {
+
+		Medico medico = new Medico();
+
+		if (Buscarmedico(matricula, listamedico)) {
+
+			medico = this.Devolvermedico(matricula, listamedico);
+
+			listamedico.remove(medico);
+
+			Scanner Sc = new Scanner(System.in);
+			int opcion = 0;
+
+			do {
+
+				System.out.println("opcion 1: modificar matricula");
+				System.out.println("opcion 2: modificar nombre");
+				System.out.println("opcion 3: modificar apellido");
+				System.out.println("0: para salir");
+				opcion = Sc.nextInt();
+				switch (opcion) {
+
+				case 1:
+					medico.Ingresarmatricula();
+					break;
+				case 2:
+					medico.Ingresarnombre();
+					break;
+				case 3:
+					medico.Ingresarapellido();
+					break;
+
+				}
+			} while (opcion != 0);
+
+			listamedico.add(medico);
+
+			System.out.println("medico modificado con exito");
+			return listamedico;
+
+		}
+
+		else {
+			System.out.println("no existe, primero registre al paciente");
+			return listamedico;
+		}
+
+	}
+
+	public ArrayList<Medico> Bajamedico(long matricula, ArrayList<Medico> listamedico) {
+
+		Medico medico = new Medico();
+
+		if (Buscarmedico(matricula, listamedico)) {
+
+			medico = this.Devolvermedico(matricula, listamedico);
+
+			listamedico.remove(medico);
+			
+			return listamedico;
+		}
+
+		else {
+			System.out.println("El paciente que deseea remover no existe");
+			return listamedico;
+		}
+
+	}
+
+	public void Generarreporte() {
+
+	}
+
+	public void Cargarestudios() {
+
+	}
+
+	public void Cargarrecetas() {
+
+	}
+	
+	public void aisistencia(ArrayList<Areamedica> listaarea,ArrayList<Paciente> listapaciente, ArrayList<Prestaciones>listaprestacion) 
+	{
+		Prestaciones prestacion = new Prestaciones();
+		Paciente pasiente = new Paciente();
+		Scanner Sc = new Scanner(System.in);
+		System.out.println("ingrese su area");
+		String ingreso= Sc.nextLine();
+		
+		System.out.println("ingre su matricula");
+		Long matricula = Sc.nextLong();
+		
+		System.out.println("ingrese el id paciente");
+		int idpaciente = Sc.nextInt();
+			
+		System.out.println("ingrese id del turno");
+		int idturno= Sc.nextInt();
+		
+		
+			if( pasiente.Buscarpaciente(idpaciente,listapaciente ) ) 
+			{
+				pasiente=pasiente.Devolverpaciente(idpaciente, listapaciente);
+				
+			
+			}
+				
+			for(Turno i: pasiente.getTurno())
+			{
+				
+				if(i.getIdturno()==idturno)
+				{
+					i.setAsistio(true);
+					prestacion.setTurno(i);
+				}
+				
+				
+			}
+			
+			listaprestacion.add(prestacion);		
+		
+		for(Areamedica e: listaarea)
+		{
+			
+			if(e.getArea()==ingreso)
+			{
+				
+				
+				
+				if(e.Buscarmedico(matricula, e.getMedico()))
+				{
+					prestacion.setMedico(e.Devolvermedico(matricula, e.getMedico()));
+				
+					
+				
+				}
+				else
+				{
+					System.out.println("sos un medico?");
+				}
+			}
+			else
+			{
+				System.out.println("no existe el area o esta mal escrita "+ingreso);
+			}
+		}
+		
+		
+		
+		
+			
+		
+	}
+
+}

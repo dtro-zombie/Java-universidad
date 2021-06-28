@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="act8obj.Conjunto"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="Listas.NodoArbol"/>
+<fullyQualifiedTypeName name="interfaces.ITrabajador"/>
+<fullyQualifiedTypeName name="pruebastp.Empresa"/>
+<fullyQualifiedTypeName name="unpaz.ayp3.Consola"/>
+<fullyQualifiedTypeName name="act_8.Tripulante"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+<fullyQualifiedTypeName name="strategy_patron.Strategy"/>
+<fullyQualifiedTypeName name="strategy_patron.Vendedorbronce"/>
+<fullyQualifiedTypeName name="strategy_patron.Vendedorplata"/>
+<fullyQualifiedTypeName name="strategy_patron.Vendedororo"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="Individuos.Paciente"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="funcional.Fecha"/>
+<fullyQualifiedTypeName name="Individuos.Medico"/>
+<fullyQualifiedTypeName name="funcional.Turno"/>
+<fullyQualifiedTypeName name="Individuos.Areamedica"/>
+<fullyQualifiedTypeName name="funcional.Prestaciones"/>
+</qualifiedTypeNameHistroy>

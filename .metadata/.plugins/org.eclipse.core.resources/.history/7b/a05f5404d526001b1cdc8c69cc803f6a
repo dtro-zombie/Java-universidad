@@ -1,0 +1,7 @@
+package funcional;
+
+public class Consultorios {
+
+	private int idconsultorio;
+	
+}

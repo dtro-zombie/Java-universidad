@@ -1,0 +1,25 @@
+package funcional;
+
+import Individuos.Medico;
+
+public class Prestaciones {
+
+	private Medico medico;
+	private Turno turno;
+
+	public Prestaciones() {
+
+		this.medico = medico;
+		this.turno = turno;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
